@@ -24,6 +24,14 @@
         {
         }
 
+        public DbSet<ApplicationUserPost> Posts { get; set; }
+
+        public DbSet<PostLike> PostLikes { get; set; }
+
+        public DbSet<PostComment> PostComments { get; set; }
+
+        public DbSet<Friendship> Friendships { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
