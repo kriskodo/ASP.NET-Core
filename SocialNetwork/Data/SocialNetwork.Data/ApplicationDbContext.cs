@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using SocialNetwork.Data.Common.Models;
-    using SocialNetwork.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using SocialNetwork.Data.Common.Models;
+    using SocialNetwork.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -31,8 +30,6 @@
         public DbSet<PostComment> PostComments { get; set; }
 
         public DbSet<Friendship> Friendships { get; set; }
-
-        public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -60,6 +57,8 @@
 
             this.ConfigureUserIdentityRelations(builder);
 
+            this.ConfigureUserFriendshipRelations(builder);
+
             EntityIndexesConfiguration.Configure(builder);
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
@@ -86,6 +85,21 @@
             where T : class, IDeletableEntity
         {
             builder.Entity<T>().HasQueryFilter(e => !e.IsDeleted);
+        }
+
+        private void ConfigureUserFriendshipRelations(ModelBuilder builder)
+        {
+            builder.Entity<Friendship>()
+                .HasOne(f => f.Accepter)
+                .WithMany(u => u.Friendships)
+                .HasForeignKey(f => f.AccepterId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Friendship>()
+                .HasOne(f => f.Requester)
+                .WithMany()
+                .HasForeignKey(f => f.RequesterId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
         // Applies configurations

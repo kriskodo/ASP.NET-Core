@@ -3,9 +3,8 @@ namespace SocialNetwork.Data.Models
 {
     using System;
 
-    using SocialNetwork.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SocialNetwork.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

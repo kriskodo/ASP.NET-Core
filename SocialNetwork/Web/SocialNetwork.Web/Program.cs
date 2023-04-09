@@ -2,17 +2,6 @@
 {
     using System.Reflection;
 
-    using SocialNetwork.Data;
-    using SocialNetwork.Data.Common;
-    using SocialNetwork.Data.Common.Repositories;
-    using SocialNetwork.Data.Models;
-    using SocialNetwork.Data.Repositories;
-    using SocialNetwork.Data.Seeding;
-    using SocialNetwork.Services.Data;
-    using SocialNetwork.Services.Mapping;
-    using SocialNetwork.Services.Messaging;
-    using SocialNetwork.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -20,6 +9,15 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using SocialNetwork.Data;
+    using SocialNetwork.Data.Common;
+    using SocialNetwork.Data.Common.Repositories;
+    using SocialNetwork.Data.Models;
+    using SocialNetwork.Data.Repositories;
+    using SocialNetwork.Data.Seeding;
+    using SocialNetwork.Services.Mapping;
+    using SocialNetwork.Services.Messaging;
+    using SocialNetwork.Web.ViewModels;
 
     public class Program
     {
@@ -64,7 +62,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
 
         private static void Configure(WebApplication app)

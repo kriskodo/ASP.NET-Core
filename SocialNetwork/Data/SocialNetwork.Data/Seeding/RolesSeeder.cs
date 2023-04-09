@@ -4,11 +4,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using SocialNetwork.Common;
-    using SocialNetwork.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using SocialNetwork.Common;
+    using SocialNetwork.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

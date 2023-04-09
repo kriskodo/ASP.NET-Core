@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using SocialNetwork.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using SocialNetwork.Web.ViewModels;
 
     public class HomeController : BaseController
     {

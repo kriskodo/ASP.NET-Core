@@ -3,10 +3,9 @@
     using System;
     using System.Linq;
 
+    using Microsoft.EntityFrameworkCore;
     using SocialNetwork.Data.Common.Models;
     using SocialNetwork.Data.Common.Repositories;
-
-    using Microsoft.EntityFrameworkCore;
 
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
         where TEntity : class, IDeletableEntity

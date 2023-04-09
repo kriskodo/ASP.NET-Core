@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using SocialNetwork.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using SocialNetwork.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {
